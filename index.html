@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Year’s Eve Party Invitation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="fireworks-background">
+    <div class="card" id="invitation-card">
+      <h1>🎆 Welcome 2025! 🎆</h1>
+      <p class="tagline">Celebrate and sparkle with us!</p>
+
+      <div class="details">
+        <p><strong>🎉 What:</strong> Year-End Party</p>
+        <p><strong>📍 Where:</strong> Harap ng bahay ni Tiya Darie</p>
+        <p><strong>🕖 Time:</strong> 7 PM onwards</p>
+        <p><strong>👗 Attire:</strong> Any outfit with a touch of purple</p>
+      </div>
+
+      <p class="invitation-message">Let’s make this a night to remember!</p>
+      <button class="accept-btn" onclick="triggerFireworks()">Accept Invitation</button>
+    </div>
+
+    <div class="thank-you-message" id="thank-you-message">
+      <h1>🎇 Thank You! 🎇</h1>
+      <p>Your acceptance means a lot. See you there!</p>
+    </div>
+  </div>
+
+  <div id="fireworks-container"></div>
+  
+  <!-- Confetti Sound -->
+  <audio id="confetti-sound" src="yay-confetti.mp3"></audio>
+
+  <script>
+    function triggerFireworks() {
+      document.getElementById('invitation-card').style.display = 'none';
+      document.getElementById('thank-you-message').style.display = 'block';
+      
+      // Play Confetti Sound
+      const confettiSound = document.getElementById('confetti-sound');
+      confettiSound.play();
+      
+      const fireworksContainer = document.getElementById('fireworks-container');
+      fireworksContainer.innerHTML = '';
+
+      for (let i = 0; i < 15; i++) {
+        const firework = document.createElement('div');
+        firework.className = 'firework';
+        firework.style.left = `${Math.random() * 100}%`;
+        firework.style.animationDelay = `${Math.random() * 2}s`;
+        firework.style.animationDuration = `${1.5 + Math.random()}s`;
+        fireworksContainer.appendChild(firework);
+      }
+
+      setTimeout(() => {
+        fireworksContainer.innerHTML = '';
+      }, 6000);
+    }
+  </script>
+</body>
+</html>

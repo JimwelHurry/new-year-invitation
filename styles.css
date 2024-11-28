@@ -1,0 +1,214 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  background: black;
+}
+
+/* Fireworks Background */
+.fireworks-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+/* Card Design */
+.card {
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  max-width: 600px;
+  width: 90%;
+  margin: 20px;
+}
+
+h1 {
+  font-size: 3em;
+  color: #FFC630;
+}
+
+.details p {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+.accept-btn {
+  background-color: #FFC630;
+  color: black;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accept-btn:hover {
+  background-color: #F9DB00;
+}
+
+/* Thank You Message */
+.thank-you-message {
+  display: none;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  animation: fadeIn 1.5s ease-in;
+}
+
+.thank-you-message h1 {
+  color: #F9DB00;
+  font-size: 3em;
+}
+
+/* Fireworks */
+#fireworks-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.firework {
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 0, 0, 0.6) 70%);
+  border-radius: 50%;
+  animation: explode 1.5s ease-out infinite;
+}
+
+@keyframes explode {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-300px) scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-350px) scale(1.5);
+  }
+  100% {
+    transform: translateY(-400px) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Fade-in animation for Thank You */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Added Spark Effect */
+.firework::before,
+.firework::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 215, 0, 0.8) 60%);
+  animation: spark 1s linear infinite;
+}
+
+.firework::before {
+  left: -15px;
+  animation-delay: 0.2s;
+}
+
+.firework::after {
+  right: -15px;
+  animation-delay: 0.4s;
+}
+
+@keyframes spark {
+  0% {
+    transform: scale(0.5) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1) translateY(-50px);
+  }
+  100% {
+    transform: scale(1.5) translateY(-80px);
+    opacity: 0;
+  }
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Adjust card and text for smaller screens */
+  .card {
+    padding: 20px;
+    margin: 15px;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .details p {
+    font-size: 1em;
+  }
+
+  .accept-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+
+  .thank-you-message h1 {
+    font-size: 2.5em;
+  }
+
+  /* Adjust fireworks container size */
+  #fireworks-container {
+    height: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  h1 {
+    font-size: 2em;
+  }
+
+  .accept-btn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+
+  .thank-you-message h1 {
+    font-size: 2em;
+  }
+
+  /* Reduce fireworks size for small screens */
+  .firework {
+    width: 8px;
+    height: 8px;
+  }
+}
